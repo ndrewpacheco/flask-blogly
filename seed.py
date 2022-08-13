@@ -1,6 +1,6 @@
 """Seed file to make sample data for pets db."""
 
-from models import User, Post, db
+from models import User, Post, Tag, db
 from app import app
 
 # Create all tables
@@ -32,10 +32,20 @@ db.session.commit()
 new_post1 = Post(title='New post 1', content='1 some post content', user_id=1)
 new_post2 = Post(title='New post 2', content='2 some post content', user_id=2)
 
+# Add tag
+new_tag1 = Tag(name="TestTag1")
+new_tag1a = Tag(name="TestTag1b")
+new_tag2 = Tag(name="TestTag2")
+
+new_post1.tags.append(new_tag1)
+new_post1.tags.append(new_tag1a)
+
 # Add new objects to session, so they'll persist
 db.session.add(new_post1)
 db.session.add(new_post2)
 
+
+db.session.add(new_tag2)
 
 # Commit--otherwise, this never gets saved!
 db.session.commit()

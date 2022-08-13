@@ -6,7 +6,12 @@
 
   <label for="post-content">Content: </label>
   <textarea name="post-content" id="post-content"></textarea>
-
+  <div>
+    {% for tag in tags:%}
+    <input type="checkbox" id="coding" name="post-tags" value="{{tag.name}}" />
+    <label for="{{tag.name}}">{{tag.name}}</label>
+    {% endfor %}
+  </div>
   <a href="/users/{{post.user_id}}">
     <input type="button" name="action" value="Cancel"
   /></a>
